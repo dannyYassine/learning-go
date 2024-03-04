@@ -1,0 +1,20 @@
+version: '3'
+
+networks:
+  swoole:
+    driver: go
+
+services:
+  learning-go-api:
+    container_name: learning-go-api
+    build:
+      context: .
+      dockerfile: go.dockerfile
+    command: >
+      sh -c "tail -f /dev/null"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/usr/src/learning-go
+    networks:
+      - go
